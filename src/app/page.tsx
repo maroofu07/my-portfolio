@@ -131,44 +131,93 @@ export default function HomePage() {
       <Divider />
 
       {/* PROJECTS */}
+   
       <section id="projects" className="px-6 py-20">
-        <motion.h2 className="text-4xl font-bold text-center text-blue-600 dark:text-blue-400 mb-10" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-          Projects
-        </motion.h2>
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {projects.map((project, index) => (
-            <motion.div key={index} className="border dark:border-gray-700 p-6 rounded-lg shadow hover:shadow-lg transition bg-white dark:bg-gray-900" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} viewport={{ once: true }}>
-              <h3 className="text-xl font-semibold">{project.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300 mt-2">{project.description}</p>
-              <a href={project.github} target="_blank" className="inline-block mt-4 text-blue-600 dark:text-blue-400 hover:underline">
-                View on GitHub →
-              </a>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+  <motion.h2 className="text-4xl font-bold text-center text-blue-600 dark:text-blue-400 mb-10"
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true }}
+  >
+    Projects
+  </motion.h2>
+
+  <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+    {[
+      {
+        title: 'Employee Management System',
+        description: 'A full CRUD backend with Spring Boot, MySQL, and REST APIs.',
+        github: 'https://github.com/maroofu07/employee-management-system',
+      },
+      {
+        title: 'Image Upload API',
+        description: 'Spring Boot service to upload & serve images via REST.',
+        github: 'https://github.com/maroofu07/Upload-Method',
+      },
+      {
+        title: 'Salon Booking System (In Progress)',
+        description: 'RESTful backend to manage appointments, stylists, and users.',
+        github: '',
+      },
+    ].map((project, index) => (
+      <motion.div key={index}
+        className="border dark:border-gray-700 p-6 rounded-lg shadow hover:shadow-lg transition bg-white dark:bg-gray-900"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+      >
+        <h3 className="text-xl font-semibold">{project.title}</h3>
+        <p className="text-gray-600 dark:text-gray-300 mt-2">{project.description}</p>
+        {project.github ? (
+          <a
+            href={project.github}
+            target="_blank"
+            className="inline-block mt-4 text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            View on GitHub →
+          </a>
+        ) : (
+          <span className="inline-block mt-4 text-green-600 dark:text-green-400 font-medium">
+            🔄 This project is currently running
+          </span>
+        )}
+      </motion.div>
+    ))}
+  </div>
+</section>
+
 
       <Divider />
 
       {/* CONTACT */}
+  
       <section id="contact" className="px-6 py-20 flex flex-col items-center text-center">
-        <motion.h2 className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-8" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-          Let’s Connect
-        </motion.h2>
-        <div className="flex gap-8 mb-12 text-2xl">
-          <a href="https://github.com/maroofu07" target="_blank" className="hover:text-blue-600"><FaGithub /></a>
-          <a href="https://www.linkedin.com/in/maroofuddin846/" target="_blank" className="hover:text-blue-600"><FaLinkedin /></a>
-          <a href="https://www.instagram.com/_iam.shaikh_/" target="_blank" className="hover:text-blue-600"><FaInstagram /></a>
-        </div>
-        <form action="https://formsubmit.co/maroofu007@gmail.com" method="POST" className="w-full max-w-lg space-y-4 text-center">
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="http://localhost:3000/thanks" />
-          <input type="text" name="name" required placeholder="Your Name" className="w-full p-3 border rounded-lg bg-white dark:bg-gray-800 text-black dark:text-white" />
-          <input type="email" name="email" required placeholder="Your Email" className="w-full p-3 border rounded-lg bg-white dark:bg-gray-800 text-black dark:text-white" />
-          <textarea name="message" rows={5} required placeholder="Your Message" className="w-full p-3 border rounded-lg bg-white dark:bg-gray-800 text-black dark:text-white" />
-          <button type="submit" className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Send Message</button>
-        </form>
-      </section>
+  <motion.h2 className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-8"
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true }}
+  >
+    Let’s Connect
+  </motion.h2>
+
+  <div className="flex gap-8 mb-12 text-2xl">
+    <a href="https://github.com/maroofu07" target="_blank" className="hover:text-blue-600"><FaGithub /></a>
+    <a href="https://www.linkedin.com/in/maroofuddin846/" target="_blank" className="hover:text-blue-600"><FaLinkedin /></a>
+    <a href="https://www.instagram.com/_iam.shaikh_/" target="_blank" className="hover:text-blue-600"><FaInstagram /></a>
+  </div>
+
+  <form action="https://formsubmit.co/maroofu007@gmail.com" method="POST" className="w-full max-w-lg space-y-4 text-center">
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="hidden" name="_next" value="https://my-portfolio-ten-liart-77.vercel.app/thanks" />
+    <input type="text" name="name" required placeholder="Your Name" className="w-full p-3 border rounded-lg bg-white dark:bg-gray-800 text-black dark:text-white" />
+    <input type="email" name="email" required placeholder="Your Email" className="w-full p-3 border rounded-lg bg-white dark:bg-gray-800 text-black dark:text-white" />
+    <textarea name="message" rows={5} required placeholder="Your Message" className="w-full p-3 border rounded-lg bg-white dark:bg-gray-800 text-black dark:text-white" />
+    <button type="submit" className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Send Message</button>
+  </form>
+</section>
+
+
     </main>
   );
 }
