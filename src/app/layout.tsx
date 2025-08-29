@@ -1,4 +1,3 @@
-// app/layout.tsx
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -7,7 +6,7 @@ import BackToTopButton from '@/components/BackToTopButton';
 import Footer from '@/components/Footer';
 import ParticlesBackground from '@/components/ParticlesBackground';
 import PageLoader from '@/components/PageLoader';
-import { ThemeProvider } from 'next-themes';
+import ThemeProviderWrapper from '@/components/ThemeProviderWrapper';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -54,14 +53,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} relative`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+        <ThemeProviderWrapper>
           <PageLoader />
           <ParticlesBackground />
           <Navbar />
           <main className="pt-24 px-6">{children}</main>
           <Footer />
-          <BackToTopButton /> {/* ✅ Make sure this is here */}
-        </ThemeProvider>
+          <BackToTopButton />
+        </ThemeProviderWrapper>
       </body>
     </html>
   );
